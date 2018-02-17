@@ -1,0 +1,96 @@
+body{
+  background:#EFEFE7;
+  font-family: 'Cormorant Garamond';
+  font-size: 16px;
+}
+.wrap{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.contenedor{
+  background: #fff;
+  margin: 10px 30px;
+  padding:10px 30px;
+  border-radius: 5px;
+}
+
+#perfil{
+  width: 25%;
+  margin-right: 5%;
+  float:left;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.foto img{
+  border-radius: 50%;
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+}
+
+li{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  color:black;
+  font-weight: bold;
+}
+
+.menu-perfil a{
+  text-align: left;
+  background: #DFD0B5;
+  border-radius: 3px;
+  width: 100%;
+  display:block;
+  margin: 5px 0;
+  padding: 5px 10px;
+}
+
+.menu-perfil a:hover{
+  background: rgb(145, 95, 14);
+  color:#FFF;
+}
+
+#contenido {
+  width: 70%;
+  float:right;
+  margin-top: 30px;
+}
+.clear{
+  clear:both;
+}
+
+h2.titulo{
+  border-bottom: 2px solid  #587E7A;
+}
+
+h2 , h3{
+  color:#587E7A;
+}
+
+h3{
+  font-style: italic;
+}
+#quien-soy li{
+  text-transform: uppercase;
+  font-weight: bold;
+  border-bottom: dotted 3px #F8EBE8;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+li.trabajo{
+  width: 150px;
+  height: 150px;
+  list-style: none;
+  float:left;
+}
+
+li.trabajo img{
+  width: 100%;
+}

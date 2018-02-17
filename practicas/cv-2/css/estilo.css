@@ -1,0 +1,136 @@
+/********************************************************************/
+/***********************estilos generales****************************/
+/********************************************************************/
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+body{
+  background:#D1D1D1;
+  font-family: 'Open Sans', sans-serif;
+}
+.wrap{
+  max-width: 1000px;
+  margin:0px auto;
+}
+.contenedor{
+  width: 80%;
+  margin: 40px auto;
+}
+a{
+  text-decoration: none;
+  color: #e7e7e7;
+}
+h1,h2,h3{
+  font-family: 'Arsenal', sans-serif;
+}
+h2{
+  border-bottom: 2px solid;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+h2 span{
+  float: right;
+}
+h3 span{
+  float: right;
+}
+
+/********************************************************************/
+/*************************    perfil     ****************************/
+/********************************************************************/
+
+#perfil{
+  width: 30%;
+  float:left;
+  margin-top: 30px;
+  background: #373737;
+  color:#e7e7e7;
+}
+
+#contacto .foto{
+  text-align: center;
+  margin-bottom: 25px;
+}
+#contacto .foto img{
+  border-radius: 50%;
+}
+ul.datos-contacto li.contacto{
+  margin: 10px 0;
+}
+ul.datos-contacto li.contacto span{
+  margin-right: 20px;
+}
+
+/********************************************************************/
+/**********************    skills     ****************************/
+/********************************************************************/
+#skills .stars{
+  float: right;
+  color:#FFF;
+}
+
+#skills .skill-1 span:nth-child(5),
+#skills .skill-2 span:nth-child(5),
+#skills .skill-3 span:nth-child(4),
+#skills .skill-3 span:nth-child(5){
+  color:grey;
+}
+
+/********************************************************************/
+/**********************    redes sociales ****************************/
+/********************************************************************/
+#redes-sociales a{
+  display: block;
+  margin-bottom: 20px;
+}
+#redes-sociales a span{
+  font-size: 20px;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+/********************************************************************/
+/**********************    contenido     ****************************/
+/********************************************************************/
+
+#contenido{
+  width: 70%;
+  float: right;
+  margin-top: 30px;
+  background: #E7E7E7;
+  color:#373737;
+}
+
+#nombre{
+  text-align: center;
+  background: #373737;
+  color:#e7e7e7;
+  padding: 10px 0;
+  border-radius: 10px;
+}
+#contenido p{
+  margin: 5px 0 40px 0;
+}
+/********************************************************************/
+/****************************Portfolio*******************************/
+/********************************************************************/
+.trabajo{
+  width:20%;
+  float:left;
+  margin:2.5%;
+}
+.trabajo img{
+  width: 100%;
+  border:5px solid transparent;
+  border-radius: 50%;
+  filter: grayscale(80%);
+}
+.trabajo img:hover{
+  border:5px solid rgba(0,0,0,.3);
+  /* transform: rotate(360deg); */
+  transition:all ease .5s;
+  filter: grayscale(0%);
+}
