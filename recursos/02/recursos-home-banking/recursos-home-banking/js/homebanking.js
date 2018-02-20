@@ -70,9 +70,15 @@ actualizarLimiteEnPantalla();
 //Funciones que tenes que completar
 function cambiarLimiteDeExtraccion() {
   var nuevoLimite = parseInt(prompt("Ingrese el nuevo Limite de extraccion"));
-  limiteExtraccion = nuevoLimite;
-  actualizarLimiteEnPantalla();
-  alert("El nuevo limite de extraccion es: "+ nuevoLimite);
+  console.log(nuevoLimite);
+  if (nuevoLimite !== null) {
+    alert("Por favor ingresa un número");
+  }else{
+    limiteExtraccion = nuevoLimite;
+    actualizarLimiteEnPantalla();
+    alert("El nuevo limite de extraccion es: "+ nuevoLimite);
+  }
+
 }
 
 function extraerDinero() {
