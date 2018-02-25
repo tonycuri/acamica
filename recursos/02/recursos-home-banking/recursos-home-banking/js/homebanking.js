@@ -70,51 +70,60 @@ actualizarLimiteEnPantalla();
 //Funciones que tenes que completar
 function cambiarLimiteDeExtraccion() {
   var nuevoLimite = parseInt(prompt("Ingrese el nuevo Limite de extraccion"));
-  console.log(nuevoLimite);
-  if (nuevoLimite !== null) {
+  if (!nuevoLimite) {
     alert("Por favor ingresa un número");
   }else{
     limiteExtraccion = nuevoLimite;
     actualizarLimiteEnPantalla();
     alert("El nuevo limite de extraccion es: "+ nuevoLimite);
   }
-
 }
 
 function extraerDinero() {
   var montoAExtraer= parseInt(prompt("Ingrese el monto que desea extraer"));
   var saldoAnterior = saldoCuenta;
-  if (montoAExtraer %100 === 0) {
-    if(saldoDisponible(montoAExtraer)){
-      if (limiteDisponible(montoAExtraer)) {
-        saldoCuenta = restarSaldo(montoAExtraer);
-        actualizarSaldoEnPantalla();
-        alert(
-          "has extraido: "+montoAExtraer +
-          "\nEL saldo anterior era de " +saldoAnterior +
-          "\nEl saldo actual es de: " +saldoCuenta
-        );
+  if (!montoAExtraer) {
+    alert("Por favor ingresa un número");
+  }else{
+    if (montoAExtraer %100 === 0) {
+      if(saldoDisponible(montoAExtraer)){
+        if (limiteDisponible(montoAExtraer)) {
+          saldoCuenta = restarSaldo(montoAExtraer);
+          actualizarSaldoEnPantalla();
+          alert(
+            "has extraido: "+montoAExtraer +
+            "\nEL saldo anterior era de " +saldoAnterior +
+            "\nEl saldo actual es de: " +saldoCuenta
+          );
+        }else{
+          alert("La cantidad de dinero que deseas extraer es mayor a tu limite de extracción.");
+          extraerDinero();
+        }
       }else{
-        alert("La cantidad de dinero que deseas extraer es mayor a tu limite de extracción.");
+        alert("No hay saldo disponible en su cuenta para extraer esa cantidad de dinero");
+        extraerDinero();
       }
     }else{
-      alert("No hay saldo disponible en su cuenta para extraer esa cantidad de dinero");
+      alert("Solo puedes extraer billetes de 100");
+      extraerDinero();
     }
-  }else{
-    alert("Solo puedes extraer billetes de 100");
   }
 }
 
 function depositarDinero() {
   var montoDepositado = parseInt(prompt("Ingrese el monto que desea depositar"));
   var saldoAnterior = saldoCuenta;
-  saldoCuenta = sumarSaldo(montoDepositado);
-  actualizarSaldoEnPantalla();
-  alert(
-    "has depositado: "+montoDepositado +
-    "\nEL saldo anterior era de " +saldoAnterior +
-    "\nEl saldo actual es de: " +saldoCuenta
-  );
+  if (!montoDepositado) {
+    alert("Por favor ingrese un número");
+  }else{
+    saldoCuenta = sumarSaldo(montoDepositado);
+    actualizarSaldoEnPantalla();
+    alert(
+      "has depositado: "+montoDepositado +
+      "\nEL saldo anterior era de " +saldoAnterior +
+      "\nEl saldo actual es de: " +saldoCuenta
+    );
+  }
 }
 
 function pagarServicio() {
@@ -143,34 +152,43 @@ function pagarServicio() {
 
 function transferirDinero() {
   var montoTransferencia = parseInt(prompt("Ingrese el monto que desea transferir"));
-  if (saldoDisponible(montoTransferencia)) {
-    var cuentaTransferencia = parseInt(prompt("Ingrese el número de cuenta al que desea hacer la transferencia"));
-    if (cuentaTransferencia === cuentaAmiga1 || cuentaTransferencia === cuentaAmiga2) {
-      restarSaldo(montoTransferencia);
-      actualizarSaldoEnPantalla();
-      alert("Se han transferido: "+montoTransferencia +
-            "\nCuenta destino: "+ cuentaTransferencia);
-    }else{
-      alert("Solo puedes transferir dinero a una cuenta amiga");
-    }
+  if (!montoTransferencia) {
+    alert("Por favor ingrese un número");
   }else{
-    alert("No hay saldo suficiente, no se puede transferir el monto seleccionado");
+    if (saldoDisponible(montoTransferencia)) {
+      var cuentaTransferencia = parseInt(prompt("Ingrese el número de cuenta al que desea hacer la transferencia"));
+      if (cuentaTransferencia === cuentaAmiga1 || cuentaTransferencia === cuentaAmiga2) {
+        restarSaldo(montoTransferencia);
+        actualizarSaldoEnPantalla();
+        alert("Se han transferido: "+montoTransferencia +
+              "\nCuenta destino: "+ cuentaTransferencia);
+      }else{
+        alert("Solo puedes transferir dinero a una cuenta amiga");
+      }
+    }else{
+      alert("No hay saldo suficiente, no se puede transferir el monto seleccionado");
+    }
   }
 }
 
 function iniciarSesion() {
-  var usuarioIngresado = prompt("Ingrese su usuario, recuerde que solo se permiten letras");
-  usuarioIngresado = usuarioIngresado.toLowerCase();
+  // var usuarioIngresado = prompt("Ingrese su usuario, recuerde que solo se permiten letras");
+  // usuarioIngresado = usuarioIngresado.toLowerCase();
   var passIngresada = parseInt(prompt("Ingrese el codigo de seguridad de su cuenta, recuerde que se permiten solo números"));
-  if (usuarioIngresado === usuario && passIngresada === pass) {
-    alert("Bienvenido/a "+ nombreUsuario + " ya puedes comenzar a realizar operaciones");
+  if (!passIngresada) {
+    alert("Por favor ingrese un número");
+    iniciarSesion();
   }else{
-    alert("Código incorrecto, Tu dinero ha sido retenido por cuestiones de seguridad");
-    saldoCuenta= 0;
-    limiteExtraccion = 0;
-    actualizarSaldoEnPantalla();
-    actualizarLimiteEnPantalla();
-    cargarNombreEnPantalla();
+    if (passIngresada === pass) {
+      alert("Bienvenido/a "+ nombreUsuario + " ya puedes comenzar a realizar operaciones");
+    }else{
+      alert("Código incorrecto, Tu dinero ha sido retenido por cuestiones de seguridad");
+      saldoCuenta= 0;
+      limiteExtraccion = 0;
+      actualizarSaldoEnPantalla();
+      actualizarLimiteEnPantalla();
+      cargarNombreEnPantalla();
+    }
   }
 }
 
