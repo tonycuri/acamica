@@ -2,6 +2,8 @@
 var nombreUsuario= "Tony Curi";
 var saldoCuenta= 3000;
 var limiteExtraccion = 1500;
+var saldoDolares = 0;
+var precioDolar = 20;
 
 //Variables Servicio
 var agua = 350;
@@ -171,28 +173,57 @@ function transferirDinero() {
   }
 }
 
+function comprarDolares(){
+  var comprarDolar = parseInt(prompt(
+    "Bienvenido a la compra de Dolares recuerde que el precio del dolar es: $"+ precioDolar+
+    "\nPor favor ingrese el monto que desea comprar"));
+  var saldoAnteriorPesos = saldoCuenta;  
+  var saldoAnteriorDolares = saldoDolares; 
+  if(!comprarDolar){
+    alert("Por favor ingrese un número");
+  }else{
+    compra = comprarDolar * precioDolar;
+    if (saldoDisponible(compra)) {
+      restarSaldo(compra);
+      saldoDolares = saldoAnteriorDolares + comprarDolar;
+      actualizarSaldoEnPantalla();
+      actualizarSaldoEnDolares();
+      alert(
+        "Has comprado: US$" + comprarDolar + 
+        "\nEL saldo anterior era de US$" + saldoAnteriorDolares + 
+        "\nEl saldo actual es de: US$" + saldoDolares+
+        "\n"+
+        "\nEL saldo anterior era de $" + saldoAnteriorPesos + 
+        "\nEl saldo actual es de: $" + saldoCuenta);
+    }else{
+      alert("No cuenta con saldo suficiente para realizar esta operación")
+    }
+  }
+}
+
 function iniciarSesion() {
-  // var usuarioIngresado = prompt("Ingrese su usuario, recuerde que solo se permiten letras");
-  // usuarioIngresado = usuarioIngresado.toLowerCase();
+  var usuarioIngresado = prompt("Ingrese su usuario, recuerde que solo se permiten letras");
+  usuarioIngresado = usuarioIngresado.toLowerCase();
   var passIngresada = parseInt(prompt("Ingrese el codigo de seguridad de su cuenta, recuerde que se permiten solo números"));
   if (!passIngresada) {
     alert("Por favor ingrese un número");
     iniciarSesion();
   }else{
-    if (passIngresada === pass) {
+    if (passIngresada === pass && usuarioIngresado === usuario) {
       alert("Bienvenido/a "+ nombreUsuario + " ya puedes comenzar a realizar operaciones");
     }else{
       alert("Código incorrecto, Tu dinero ha sido retenido por cuestiones de seguridad");
+      document.getElementById("nombre").innerHTML = "Usuario Incorrecto";
       saldoCuenta= 0;
       limiteExtraccion = 0;
       actualizarSaldoEnPantalla();
       actualizarLimiteEnPantalla();
-      cargarNombreEnPantalla();
     }
   }
 }
 
 iniciarSesion();
+
 //Funciones que actualizan el valor de las variables en el HTML
 function cargarNombreEnPantalla() {
     document.getElementById("nombre").innerHTML = "Bienvenido/a " + nombreUsuario;
@@ -205,3 +236,8 @@ function actualizarSaldoEnPantalla() {
 function actualizarLimiteEnPantalla() {
     document.getElementById("limite-extraccion").innerHTML = "Tu límite de extracción es: $" + limiteExtraccion;
 }
+
+function actualizarSaldoEnDolares() {
+  document.getElementById("saldo-dolares").innerHTML = "Tu saldo en dolares es: US$" + saldoDolares;
+}
+
