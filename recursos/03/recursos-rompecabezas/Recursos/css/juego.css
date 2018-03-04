@@ -30,9 +30,21 @@ li::before {
   padding: 30px;
   color: #000;
 }
-
+#juego{
+  width: 600px;
+  height: 600px;
+  background:rgb(109, 177, 174);
+}
+#juego .piezas{
+  width: 33%;
+  height: 33%;
+  border:1px solid #3C9391;
+  float:left;
+}
+#juego .piezas img{
+  width: 100%;
+}
 #juego div {
-
   text-align: center;
   animation: fadein 2s;
 }
@@ -41,3 +53,18 @@ li::before {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
+#titulo{
+  background: #E54155;
+  color:#FFF;
+  padding: 2px;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+#instrucciones p{
+  color:#E54155;
+  font-weight: bold;
+}
+
+
+
