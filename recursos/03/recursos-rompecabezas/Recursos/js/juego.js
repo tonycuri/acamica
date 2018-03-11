@@ -6,6 +6,13 @@ var grilla = [
   [7, 8, 9]
 ];
 
+//representacion de la grilla ganadora
+var grillaGanadora = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+];
+
 /* Estas dos variables son para guardar la posición
 de la pieza vacía. Esta posición comienza siendo la [2, 2]*/
 var filaVacia = 2;
@@ -13,9 +20,17 @@ var columnaVacia = 2;
 
 
 // Esta función va a chequear si el Rompecabezas est&aacute; en la posición ganadora
-function chequearSiGano(){
+function chequearSiGano(array1,array2){
+  if (array1.length === array2.length) {
+    for (let i = 0; i < array1.length; i++) {
+      for (let j = 0; j < array2.length; j++) {
+        return (array1[i][j] === array2[i][j]);
+      }
+    }
+  }
 }
 
+chequearSiGano(grilla,grillaGanadora);
 
 
 // la hacen los alumnos, pueden mostrar el cartel como prefieran. Pero es importante que usen
@@ -58,7 +73,6 @@ function intercambiarPosiciones(filaPos1, columnaPos1, filaPos2, columnaPos2){
 function actualizarPosicionVacia(nuevaFila,nuevaColumna){
 
 }
-
 
 // Para chequear si la posicón está dentro de la grilla.
 function posicionValida(fila, columna){
@@ -105,8 +119,6 @@ function moverEnDireccion(direccion){
   }
 
 }
-
-
 
 /* Las funciones que se encuentran a continuación ya están implementadas.
 No hace falta que entiendas exactamente que es lo que hacen, ya que contienen
