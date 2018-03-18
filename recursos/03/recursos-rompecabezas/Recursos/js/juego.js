@@ -27,6 +27,7 @@ function chequearSiGano(array1,array2){
         return (array1[i][j] === array2[i][j]);
       }
     }
+    mostrarCartelGanador();
   }
 }
 
@@ -36,8 +37,13 @@ chequearSiGano(grilla,grillaGanadora);
 // la hacen los alumnos, pueden mostrar el cartel como prefieran. Pero es importante que usen
 // esta función
 function mostrarCartelGanador(){
+  var ventana = document.getElementById("miVentana");
+  ventana.style.display = "block";
 }
-
+function ocultarVentana(){
+  var ventana = document.getElementById("miVentana");
+  ventana.style.display = "none";
+}
 // Intercambia posiciones grilla y en el DOM
 /* Esta función puede ser pensada por partes, incluso separarse en dos funciones, para 
 separar el manejo de posición de la grilla y, por otro lado, el manejo del DOM.
