@@ -95,10 +95,12 @@ li::before {
   font-style: italic;
 }
 #mi-ventana {
-  background-image: url(../images/victoria.jpg);
+  background-image: url(../images/ganaste.jpg);
   background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
   border:6px solid rgba(0,0,0,.5);
-  border-radius: 20px;
+  /* border-radius: 20px; */
   position: fixed;
   z-index: 1000;
   padding: 40px;
@@ -110,15 +112,17 @@ li::before {
   font-size: 1.5em;
   display: none;
   animation:fadein 1s;
+  overflow: hidden;
 }
 #mi-ventana p{
-  background:rgba(232,74,95,.4);
+  /* background:rgba(232,74,95,.4); */
   padding: 10px 10px;
   border-radius: 5px;
   color:#FFF;
   font-size: 1.2em;
   text-shadow: 2px 2px 2px #000;
   text-transform: uppercase;
+  margin: 0;
 }
 #mi-ventana button{
   border:none;
@@ -127,4 +131,5 @@ li::before {
   color:#FFF;
   font-weight: bold;
   border-radius: 5px;
+  cursor: pointer;
 }
