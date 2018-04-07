@@ -56,6 +56,7 @@ function chequearSiGano(array1,array2) {
     for (var i = 0; i < array1.length; i++) {
       for (var j = 0; j < array2.length; j++) {  
         if (array1[i][j] == array2[i][j]) {  
+          console.log(array1[i][j]);
           continue;     
         }else{
           return false;
@@ -97,7 +98,7 @@ function mostrarCartelGanador() {
 function ocultarVentana() {
   var ventana = document.getElementById("mi-ventana");
   ventana.style.display = "none";
-  mezclarPiezas(30);
+  mezclarPiezas(3);
 }
 
 /* Función que intercambia dos posiciones en la grilla.
@@ -308,7 +309,7 @@ y ejecutando la función para que se capturen las teclas que
 presiona el usuario */
 function iniciar() {
     mostrarInstrucciones(instrucciones);
-    mezclarPiezas(30);
+    mezclarPiezas(3);
     capturarTeclas();
 }
 
