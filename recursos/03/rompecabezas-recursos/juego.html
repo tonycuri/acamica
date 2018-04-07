@@ -47,8 +47,15 @@
        Autor: Tony Curi Desarrollador Front-End Jr.
     </div>
     <div id="mi-ventana">
-      <p>!!! Felicidades Ganaste¡¡¡¡</p>
-      <button onclick="ocultarVentana()">Volver a jugar</button>
+      <div id="cartel">
+        <h1>!!!!Ganaste¡¡¡¡</h1>
+        <ul id="lista-puntaje">
+          <li>Felicidades armaste de forma correcta el rompecabezas</li>
+          <li>Tus movimientos fueron:</li>
+          <li id="movimientos"></li>
+        </ul>
+        <button onclick="ocultarVentana();cambioRompecabezas()">Volver a jugar</button>
+      </div>
     </div>
     <script src="js/juego.js"></script>
   </body>

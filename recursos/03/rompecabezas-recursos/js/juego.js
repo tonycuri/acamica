@@ -1,18 +1,24 @@
 // Arreglo que contiene las intrucciones del juego 
 var instrucciones = [
-  'Utilizar las flechas del teclado para mover las piezas.',
-  'Ordenar las piezas hasta alcanzar la immagen objetivo.'
+  'Utilizar las flechas del teclado para mover las piezas del rompecabezas.',
+  'Ordenar las piezas hasta alcanzar la imagen objetivo.'
 ];
 
 // Arreglo para ir guardando los movimientos que se vayan realizando
 var movimientos = [];
 
+//Variable que contiene el tipo de rompecabezas expresado en un numero
+var rompecabezas = 0;
+
+//variable que devuelve arreglo con las imagenes del rompecabezas
+var imagenes = document.getElementsByTagName("img");
+
 // Representación de la grilla. Cada número representa a una pieza.
 // El 9 es la posición vacía
 var grilla = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
 ];
 
 var grillaGanadora = [
@@ -42,6 +48,7 @@ function agregarUltimoMovimiento(ultMov){
   movimientos.push(ultMov);
   actualizarUltimoMovimiento(ultMov);
 }
+
 /* Esta función va a chequear si el Rompecabezas esta en la posicion ganadora. 
 Existen diferentes formas de hacer este chequeo a partir de la grilla. */
 function chequearSiGano(array1,array2) {
@@ -59,16 +66,38 @@ function chequearSiGano(array1,array2) {
     return true;
   }
 }
+//funcion que cambia las imagenes del rompecabezas
+function cambioImagen() { 
+  imagenes[0].src ="images/final2.jpg";
+  for (let i = 1; i < imagenes.length; i++) {
+    imagenes[i].src = "images/" + i + ".jpg";
+  }
+  rompecabezas = 1;
 
+}
+
+function cambioRompecabezas(){
+  if (rompecabezas == 0) {
+    cambioImagen();
+  }else if(rompecabezas == 1){
+    imagenes[0].src = "images/final.png";
+    for (let i = 1; i < imagenes.length; i++) {
+      imagenes[i].src = "images/" + i + "0.jpg";
+    }
+    rompecabezas = 0;
+  }
+}
 
 // Implementar alguna forma de mostrar un cartel que avise que ganaste el juego
 function mostrarCartelGanador() {
   var ventana = document.getElementById("mi-ventana");
+  document.getElementById("movimientos").innerHTML = movimientos.length;
   ventana.style.display = "block";
 }
 function ocultarVentana() {
   var ventana = document.getElementById("mi-ventana");
   ventana.style.display = "none";
+  mezclarPiezas(30);
 }
 
 /* Función que intercambia dos posiciones en la grilla.
@@ -91,9 +120,8 @@ function intercambiarPosicionesGrilla(filaPos1, columnaPos1, filaPos2, columnaPo
 function actualizarPosicionVacia(nuevaFila, nuevaColumna) {
     //COMPLETAR
     if (posicionValida(nuevaFila,nuevaColumna)) {
-      nuevaFila = filaVacia;
-      nuevaColumna = columnaVacia;
-      console.log(filaVacia, columnaVacia);
+      filaVacia = nuevaFila;
+      columnaVacia = nuevaColumna;
     }
 }
 
@@ -111,26 +139,26 @@ function moverEnDireccion(direccion) {
 
   // Mueve pieza hacia la abajo, reemplazandola con la blanca
   if (direccion === codigosDireccion.ABAJO) {
-    nuevaFilaPiezaBlanca = filaVacia - 1;
-    nuevaColumnaPiezaBlanca = columnaVacia;
+    nuevaFilaPiezaVacia = filaVacia + 1;
+    nuevaColumnaPiezaVacia = columnaVacia;
   }
     
   // Mueve pieza hacia arriba, reemplazandola con la blanca
   else if (direccion === codigosDireccion.ARRIBA) {
-    nuevaFilaPiezaBlanca = filaVacia + 1;
-    nuevaColumnaPiezaBlanca = columnaVacia;
+    nuevaFilaPiezaVacia = filaVacia - 1;
+    nuevaColumnaPiezaVacia = columnaVacia;
   }
     
   // Mueve pieza hacia la derecha, reemplazandola con la blanca
   else if (direccion === codigosDireccion.DERECHA) {
-    nuevaFilaPiezaBlanca = filaVacia;
-    nuevaColumnaPiezaBlanca = columnaVacia -1;
+    nuevaFilaPiezaVacia = filaVacia;
+    nuevaColumnaPiezaVacia = columnaVacia + 1;
   }
     
   // Mueve pieza hacia la izquierda, reemplazandola con la blanca
   else if (direccion === codigosDireccion.IZQUIERDA) {
-    nuevaFilaPiezaBlanca = filaVacia;
-    nuevaColumnaPiezaBlanca = columnaVacia + 1;
+    nuevaFilaPiezaVacia = filaVacia;
+    nuevaColumnaPiezaVacia = columnaVacia - 1;
   }
 
   /* A continuación se chequea si la nueva posición es válida, si lo es, se intercambia. 
@@ -140,13 +168,10 @@ function moverEnDireccion(direccion) {
     if (posicionValida(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia)) {
         intercambiarPosiciones(filaVacia, columnaVacia, nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
         actualizarPosicionVacia(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
-
   //COMPLETAR: Agregar la dirección del movimiento al arreglo de movimientos
-      agregarUltimoMovimiento(direccion);
-
+        agregarUltimoMovimiento(direccion);
     }
 }
-
 
 //////////////////////////////////////////////////////////
 ////////A CONTINUACIÓN FUNCIONES YA IMPLEMENTADAS.////////
@@ -245,6 +270,8 @@ function mezclarPiezas(veces) {
 
   var direccion = direcciones[Math.floor(Math.random() * direcciones.length)];
   moverEnDireccion(direccion);
+  //ponemos en 0 el arreglo de movimientos
+  movimientos = [];
 
   setTimeout(function() {
       mezclarPiezas(veces - 1);
