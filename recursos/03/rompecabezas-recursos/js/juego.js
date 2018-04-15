@@ -21,6 +21,7 @@ var grilla = [
   [7, 8, 9]
 ];
 
+//variable que guarda la grilla ganadora
 var grillaGanadora = [
   [1, 2, 3],
   [4, 5, 6], 
@@ -77,6 +78,7 @@ function cambioImagen() {
 
 }
 
+//funcion que cambia de rompecabezas cuando terminas el juego
 function cambioRompecabezas(){
   if (rompecabezas == 0) {
     cambioImagen();
@@ -98,7 +100,7 @@ function mostrarCartelGanador() {
 function ocultarVentana() {
   var ventana = document.getElementById("mi-ventana");
   ventana.style.display = "none";
-  mezclarPiezas(3);
+  mezclarPiezas(30);
 }
 
 /* Función que intercambia dos posiciones en la grilla.
@@ -309,7 +311,7 @@ y ejecutando la función para que se capturen las teclas que
 presiona el usuario */
 function iniciar() {
     mostrarInstrucciones(instrucciones);
-    mezclarPiezas(3);
+    mezclarPiezas(30);
     capturarTeclas();
 }
 
