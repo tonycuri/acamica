@@ -24,6 +24,34 @@ var nombreColores = ['White', 'LightYellow',
 // Es decir, el que se elige con la rueda de color.
 var colorPersonalizado = document.getElementById('color-personalizado');
 
+//variable que representa la paleta de colores
+var paleta = document.getElementById('paleta');
+
+//variable que representa la grilla de pixeles
+var grilla = document.getElementById('grilla-pixeles');
+
+//funcion que crea la paleta de colores
+function paletaColores(){
+  var color;
+  for (let i = 0; i < nombreColores.length; i++) {
+    color = document.createElement("div");
+    color.className = 'color-paleta';
+    color.style.backgroundColor = nombreColores[i];
+    paleta.appendChild(color);
+  }
+}
+paletaColores();
+
+//funcion que crea la grilla donde trabajaremos con los colores
+function crearGrilla() {
+  var div;
+  for (let i = 0; i < 1749; i++) {
+    div = document.createElement('div');
+    grilla.appendChild(div);
+  }
+}
+crearGrilla();
+
 colorPersonalizado.addEventListener('change', 
   (function() {
     // Se guarda el color de la rueda en colorActual
