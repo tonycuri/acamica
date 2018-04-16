@@ -30,6 +30,9 @@ var paleta = document.getElementById('paleta');
 //variable que representa la grilla de pixeles
 var grilla = document.getElementById('grilla-pixeles');
 
+//variable indicador de color
+var indicadorColor = document.getElementById('indicador-de-color');
+
 //funcion que crea la paleta de colores
 function paletaColores(){
   var color;
@@ -52,12 +55,28 @@ function crearGrilla() {
 }
 crearGrilla();
 
+//capturamos el color de la paleta
+paleta.addEventListener('click',cambiarColor);
+
+//funcion que cambia el color del indicador por el que seleccionamos en la Paleta de colores
+function cambiarColor(e){
+  // alert(e.target.style.backgroundColor);
+  // console.log(e.target.style.backgroundColor);
+  indicadorColor.style.backgroundColor = e.target.style.backgroundColor;
+}
+
+//capturamos el color del indicador de color y pintamos la grilla
+grilla.addEventListener('click',cambiarColorGrilla);
+
+function cambiarColorGrilla(e) {
+  e.target.style.backgroundColor = indicadorColor.style.backgroundColor;
+}
+
 colorPersonalizado.addEventListener('change', 
   (function() {
     // Se guarda el color de la rueda en colorActual
     colorActual = colorPersonalizado.value;
     // Completar para que cambie el indicador-de-color al colorActual
-
-
+    indicadorColor.style.backgroundColor = colorActual;
   })
 );
