@@ -4,6 +4,11 @@ var instrucciones = [
   'Ordenar las piezas hasta alcanzar la imagen objetivo.'
 ];
 
+//Arreglo que contiene el texto del cartel ganador
+var cartel = [
+  "Felicidades armaste de forma correcta el rompecabezas.",
+  "Tus movimientos fueron:"
+];
 // Arreglo para ir guardando los movimientos que se vayan realizando
 var movimientos = [];
 
@@ -40,6 +45,7 @@ Podés ver su implementación en la ultima parte de este codigo. */
 function mostrarInstrucciones(instrucciones) {
     for (let i = 0; i < instrucciones.length; i++) {  
       mostrarInstruccionEnLista(instrucciones[i],'lista-instrucciones');
+      mostrarInstruccionEnLista(cartel[i],'lista-puntaje');
     }
 }
 
