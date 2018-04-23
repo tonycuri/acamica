@@ -1,3 +1,7 @@
+/////////////////////////////////////////////////////////
+//////////////////// VARIABLES /////////////////////////
+/////////////////////////////////////////////////////////
+
 var nombreColores = ['White', 'LightYellow',
   'LemonChiffon', 'LightGoldenrodYellow', 'PapayaWhip', 'Moccasin', 'PeachPuff', 'PaleGoldenrod', 'Bisque', 'NavajoWhite', 'Wheat', 'BurlyWood', 'Tan',
   'Khaki', 'Yellow', 'Gold', 'Orange', 'DarkOrange', 'OrangeRed', 'Tomato', 'Coral', 'DarkSalmon', 'LightSalmon', 'LightCoral', 'Salmon', 'PaleVioletRed',
@@ -33,6 +37,45 @@ var grilla = document.getElementById('grilla-pixeles');
 //variable indicador de color
 var indicadorColor = document.getElementById('indicador-de-color');
 
+//variable que indica si el mouse esta precionado o no
+var mousePrecionado;
+
+/////////////////////////////////////////////////////////
+//////////////////// EVENTOS /////////////////////////
+/////////////////////////////////////////////////////////
+
+//capturamos el color de la paleta
+paleta.addEventListener('click',cambiarColor);
+
+//capturamos el color del indicador de color y pintamos la grilla
+grilla.addEventListener('click',cambiarColorGrilla);
+
+//capturamos el color de la rueda y lo agregamos a colorActual
+colorPersonalizado.addEventListener("change", function() {
+  // Se guarda el color de la rueda en colorActual
+  colorActual = colorPersonalizado.value;
+  // Completar para que cambie el indicador-de-color al colorActual
+  indicadorColor.style.backgroundColor = colorActual;
+});
+
+//capturamos el evento del mouse cuando este es precionado
+grilla.addEventListener('mousedown',function(){
+  mousePrecionado = true;
+  console.log(mousePrecionado);
+});
+
+//capturamos el evento del mouse cuando este es precionado y luego soltado
+grilla.addEventListener("mouseup", function() {
+  mousePrecionado = false;
+  console.log(mousePrecionado);
+});
+
+grilla.addEventListener('mousemove',pintarPresionado);
+
+/////////////////////////////////////////////////////////
+//////////////////// FUNCIONES /////////////////////////
+/////////////////////////////////////////////////////////
+
 //funcion que crea la paleta de colores
 function paletaColores(){
   var color;
@@ -43,7 +86,6 @@ function paletaColores(){
     paleta.appendChild(color);
   }
 }
-paletaColores();
 
 //funcion que crea la grilla donde trabajaremos con los colores
 function crearGrilla() {
@@ -53,30 +95,26 @@ function crearGrilla() {
     grilla.appendChild(div);
   }
 }
-crearGrilla();
-
-//capturamos el color de la paleta
-paleta.addEventListener('click',cambiarColor);
 
 //funcion que cambia el color del indicador por el que seleccionamos en la Paleta de colores
 function cambiarColor(e){
-  // alert(e.target.style.backgroundColor);
-  // console.log(e.target.style.backgroundColor);
   indicadorColor.style.backgroundColor = e.target.style.backgroundColor;
 }
 
-//capturamos el color del indicador de color y pintamos la grilla
-grilla.addEventListener('click',cambiarColorGrilla);
-
+//funcion que cambia el color de la grilla
 function cambiarColorGrilla(e) {
   e.target.style.backgroundColor = indicadorColor.style.backgroundColor;
 }
 
-colorPersonalizado.addEventListener('change', 
-  (function() {
-    // Se guarda el color de la rueda en colorActual
-    colorActual = colorPersonalizado.value;
-    // Completar para que cambie el indicador-de-color al colorActual
-    indicadorColor.style.backgroundColor = colorActual;
-  })
-);
+//funcion que pinta la grilla dependiendo si el mouse esta precionado o no
+function pintarPresionado(e){
+  if (mousePrecionado === true) {
+    cambiarColorGrilla(e);
+  }
+}
+
+/////////////////////////////////////////////////////////
+//////////////  LLAMADO DE FUNCIONES ////////////////////
+/////////////////////////////////////////////////////////
+paletaColores();
+crearGrilla();
