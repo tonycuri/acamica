@@ -1,0 +1,9 @@
+Clave: Palabra
+Valor: definicion
+
+
+*Todo lo que nos interesa del problema real.
+ ejemplo: si modelamos un torneo de futbol, necesitamos los jugadores, cancha, pelota.
+*Responsabilidades de cada objeto.
+*Relaciones entre objetos.
+
