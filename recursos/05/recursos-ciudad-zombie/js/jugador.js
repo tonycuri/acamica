@@ -10,6 +10,14 @@ var Jugador = {
   alto: 30,
   velocidad: 10,
   vidas: 5,
+  mover:function(movX,movY){
+    this.x = this.x + movX;
+    this.y = this.y + movY;
+  },
+  perderVidas:function(){
+    this.vidas = this.vidas - 1;
+    console.log("perdiste una vida");
+  }
   // Hay que agregar lo que falte al jugador: movimientos, perdida de vidas,
   // y todo lo que haga falta para que cumpla con sus responsabilidades
 
