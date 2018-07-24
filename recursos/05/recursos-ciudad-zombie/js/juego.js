@@ -20,8 +20,24 @@ var Juego = {
   obstaculosCarretera: [
     /*Aca se van a agregar los obstaculos visibles. Tenemos una valla horizontal
     de ejemplo, pero podras agregar muchos mas. */
-    new Obstaculo('imagenes/valla_horizontal.png', 70, 430, 30, 30, 1)
-
+    new Obstaculo('imagenes/valla_horizontal.png', 70, 430, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 100, 430, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 130, 430, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 160, 300, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 130, 300, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 460, 290, 30, 30, 1),
+    new Obstaculo('imagenes/valla_vertical.png', 210, 380, 30, 30, 1),
+    new Obstaculo('imagenes/valla_vertical.png', 330, 420, 30, 30, 1),
+    new Obstaculo('imagenes/valla_vertical.png', 330, 450, 30, 30, 1),
+    new Obstaculo('imagenes/valla_vertical.png', 330, 480, 30, 30, 1),
+    //autos rotos
+    new Obstaculo('imagenes/auto_verde_abajo.png',180,100,15,30,3),
+    new Obstaculo('imagenes/auto_verde_abajo.png',820,100,15,30,3),
+    new Obstaculo('imagenes/auto_verde_derecha.png',300,210,30,15,3),
+    //baches
+    new Obstaculo('imagenes/bache.png',400,70,30,30,2),
+    new Obstaculo('imagenes/bache.png',760,400,30,30,2),
+    new Obstaculo('imagenes/bache.png',560,480,30,30,2),
   ],
   /* Estos son los bordes con los que se puede chocar, por ejemplo, la vereda.
    Ya estan ubicados en sus lugares correspondientes. Ya aparecen en el mapa, ya
@@ -115,27 +131,15 @@ Juego.capturarMovimiento = function(tecla) {
   // El movimiento esta determinado por la velocidad del jugador
   if (tecla == 'izq') {
     movX = -velocidad;
-    Jugador.sprite = "imagenes/auto_rojo_izquierda.png";
-    Jugador.alto = 15;
-    Jugador.ancho = 30;
   }
   if (tecla == 'arriba') {
     movY = -velocidad;
-    Jugador.sprite = "imagenes/auto_rojo_arriba.png";
-    Jugador.alto = 30;
-    Jugador.ancho = 15;
   }
   if (tecla == 'der') {
     movX = velocidad;
-    Jugador.sprite = "imagenes/auto_rojo_derecha.png";
-    Jugador.alto = 15;
-    Jugador.ancho = 30;
   }
   if (tecla == 'abajo') {
     movY = velocidad;
-    Jugador.sprite = "imagenes/auto_rojo_abajo.png";
-    Jugador.alto = 30;
-    Jugador.ancho = 15;
   }
 
   // Si se puede mover hacia esa posicion hay que hacer efectivo este movimiento

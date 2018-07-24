@@ -13,6 +13,24 @@ var Jugador = {
   mover:function(movX,movY){
     this.x = this.x + movX;
     this.y = this.y + movY;
+    
+    if (this.x > this.x + movX){
+      Jugador.sprite = "imagenes/auto_rojo_izquierda.png";
+      Jugador.alto = 15;
+      Jugador.ancho = 30;
+    }else if(this.x < this.x + movX){
+      Jugador.sprite = "imagenes/auto_rojo_derecha.png";
+      Jugador.alto = 15;
+      Jugador.ancho = 30;
+    }else if(this.y > this.y + movY){
+      Jugador.sprite = "imagenes/auto_rojo_arriba.png";
+      Jugador.alto = 30;
+      Jugador.ancho = 15;
+    } else if (this.y < this.y + movY) {
+      Jugador.sprite = "imagenes/auto_rojo_abajo.png";
+      Jugador.alto = 30;
+      Jugador.ancho = 15;
+    }
   },
   perderVidas:function(){
     this.vidas = this.vidas - 1;
