@@ -26,10 +26,10 @@ var Juego = {
     new Obstaculo('imagenes/valla_horizontal.png', 160, 300, 30, 30, 1),
     new Obstaculo('imagenes/valla_horizontal.png', 130, 300, 30, 30, 1),
     new Obstaculo('imagenes/valla_horizontal.png', 460, 290, 30, 30, 1),
-    new Obstaculo('imagenes/valla_vertical.png', 210, 380, 30, 30, 1),
-    new Obstaculo('imagenes/valla_vertical.png', 330, 420, 30, 30, 1),
-    new Obstaculo('imagenes/valla_vertical.png', 330, 450, 30, 30, 1),
-    new Obstaculo('imagenes/valla_vertical.png', 330, 480, 30, 30, 1),
+    new Obstaculo('imagenes/valla_vertical.png', 280, 380, 30, 30, 1),
+    new Obstaculo('imagenes/valla_vertical.png', 510, 420, 30, 30, 1),
+    new Obstaculo('imagenes/valla_vertical.png', 510, 450, 30, 30, 1),
+    new Obstaculo('imagenes/valla_vertical.png', 510, 480, 30, 30, 1),
     //autos rotos
     new Obstaculo('imagenes/auto_verde_abajo.png',180,100,15,30,3),
     new Obstaculo('imagenes/auto_verde_abajo.png',820,100,15,30,3),
@@ -38,6 +38,7 @@ var Juego = {
     new Obstaculo('imagenes/bache.png',400,70,30,30,2),
     new Obstaculo('imagenes/bache.png',760,400,30,30,2),
     new Obstaculo('imagenes/bache.png',560,480,30,30,2),
+    new Obstaculo('imagenes/bache.png',350,480,30,30,2),
   ],
   /* Estos son los bordes con los que se puede chocar, por ejemplo, la vereda.
    Ya estan ubicados en sus lugares correspondientes. Ya aparecen en el mapa, ya
@@ -166,6 +167,8 @@ Juego.dibujar = function() {
   /* Completar */
   Dibujante.dibujarEntidad(Jugador);
 
+  //dibuja la linea de meta
+  Dibujante.dibujarRectangulo('yellow',759,549,128,15);
   // Se recorren los obstaculos de la carretera pintandolos
   this.obstaculosCarretera.forEach(function(obstaculo) {
     Dibujante.dibujarEntidad(obstaculo);
@@ -218,9 +221,8 @@ Juego.chequearColisiones = function(x, y) {
   var puedeMoverse = true
   this.obstaculos().forEach(function(obstaculo) {
     if (this.intersecan(obstaculo, this.jugador, x, y)) {
-
       /*COMPLETAR, obstaculo debe chocar al jugador*/
-
+      obstaculo.chocar();
       puedeMoverse = false
     }
   }, this)
