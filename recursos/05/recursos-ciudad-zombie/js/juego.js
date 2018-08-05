@@ -33,7 +33,7 @@ var Juego = {
     //autos rotos
     new Obstaculo('imagenes/auto_verde_abajo.png',180,100,15,30,3),
     new Obstaculo('imagenes/auto_verde_abajo.png',820,100,15,30,3),
-    new Obstaculo('imagenes/auto_verde_derecha.png',300,210,30,15,3),
+    new Obstaculo('imagenes/auto_verde_derecha.png',300,240,30,15,3),
     //baches
     new Obstaculo('imagenes/bache.png',400,70,30,30,2),
     new Obstaculo('imagenes/bache.png',760,400,30,30,2),
@@ -61,7 +61,16 @@ var Juego = {
   ],
   // Los enemigos se agregaran en este arreglo.
   enemigos: [
-
+    //zombies caminadores
+    new Enemigo('zombie1.png',577,900,10,10,1,2),
+    new Enemigo('zombie1.png',600,800,10,10,3,10),
+    new Enemigo('zombie1.png',580,500,10,10,3,10),
+    new Enemigo('zombie1.png',670,620,10,10,3,10),
+    new Enemigo('zombie1.png',700,720,10,10,3,10)
+    //zombies conductores
+    // new Enemigo('tren_horizontal.png',400,322,90,30,3,10,10),
+    // new Enemigo('tren_vertical.png',644,0,30,90,3,10,10),
+    // new Enemigo('tren_vertical.png',678,0,30,90,3,10,10)
   ]
 
 }
@@ -177,6 +186,7 @@ Juego.dibujar = function() {
   // Se recorren los enemigos pintandolos
   this.enemigos.forEach(function(enemigo) {
     /* Completar */
+    Dibujante.dibujarEntidad(enemigo);
   });
 
   // El dibujante dibuja las vidas del jugador
