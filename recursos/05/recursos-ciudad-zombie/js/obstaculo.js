@@ -12,6 +12,7 @@ var Obstaculo = function (sprite, x, y, ancho, alto, potencia) {
     if(potencia > 0){
       Jugador.perderVidas(potencia);
       potencia = 0;
+      Juego.reproducirSonido("audio_auto");
     }
   };
   // Implementar el metodo chocar(jugador) para que al chocar con un obstaculo

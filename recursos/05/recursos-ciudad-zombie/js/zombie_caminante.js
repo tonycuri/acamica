@@ -46,4 +46,5 @@ ZombieConductor.prototype.atacar = function(jugador) {
 }*/
 ZombieCaminante.prototype.atacar =  function(jugador){
   jugador.perderVidas(2);
+  Juego.reproducirSonido("audio_zombie");
 }

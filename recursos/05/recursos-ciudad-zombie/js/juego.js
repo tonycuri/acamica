@@ -166,31 +166,31 @@ Juego.dibujar = function() {
   //Se pinta la imagen de fondo segun el estado del juego
   this.dibujarFondo();
 
-  /* Aca hay que agregar la logica para poder dibujar al jugador principal
-  utilizando al dibujante y los metodos que nos brinda.
-  "Dibujante dibuja al jugador" */
+  if(!(this.terminoJuego() || this.ganoJuego())){
+    /* Aca hay que agregar la logica para poder dibujar al jugador principal
+    utilizando al dibujante y los metodos que nos brinda.
+    "Dibujante dibuja al jugador" */
+    Dibujante.dibujarEntidad(Jugador);
 
-  /* Completar */
-  Dibujante.dibujarEntidad(Jugador);
+    //dibuja la linea de meta
+    Dibujante.dibujarRectangulo('yellow',759,549,128,15);
+    // Se recorren los obstaculos de la carretera pintandolos
+    this.obstaculosCarretera.forEach(function(obstaculo) {
+      Dibujante.dibujarEntidad(obstaculo);
+    });
 
-  //dibuja la linea de meta
-  Dibujante.dibujarRectangulo('yellow',759,549,128,15);
-  // Se recorren los obstaculos de la carretera pintandolos
-  this.obstaculosCarretera.forEach(function(obstaculo) {
-    Dibujante.dibujarEntidad(obstaculo);
-  });
+    // Se recorren los enemigos pintandolos
+    this.enemigos.forEach(function(enemigo) {
+      Dibujante.dibujarEntidad(enemigo);
+    });
 
-  // Se recorren los enemigos pintandolos
-  this.enemigos.forEach(function(enemigo) {
-    Dibujante.dibujarEntidad(enemigo);
-  });
-
-  // El dibujante dibuja las vidas del jugador
-  var tamanio = this.anchoCanvas / this.vidasInicial;
-  Dibujante.dibujarRectangulo('white', 0, 0, this.anchoCanvas, 8);
-  for (var i = 0; i < this.jugador.vidas; i++) {
-    var x = tamanio * i
-    Dibujante.dibujarRectangulo('red', x, 0, tamanio, 8);
+    // El dibujante dibuja las vidas del jugador
+    var tamanio = this.anchoCanvas / this.vidasInicial;
+    Dibujante.dibujarRectangulo('white', 0, 0, this.anchoCanvas, 8);
+    for (var i = 0; i < this.jugador.vidas; i++) {
+      var x = tamanio * i
+      Dibujante.dibujarRectangulo('red', x, 0, tamanio, 8);
+    }
   }
 };
 
@@ -258,6 +258,7 @@ Juego.dibujarFondo = function() {
   else if (this.ganoJuego()) {
     Dibujante.dibujarImagen('imagenes/Splash.png', 190, 113, 500, 203);
     document.getElementById('reiniciar').style.visibility = 'visible';
+    Jugador.reproducirSonido("audio_win");
   } else {
     Dibujante.dibujarImagen('imagenes/mapa.png', 0, 5, this.anchoCanvas, this.altoCanvas);
   }
@@ -286,3 +287,9 @@ document.addEventListener('keydown', function(e) {
 
   Juego.capturarMovimiento(allowedKeys[e.keyCode]);
 });
+
+Juego.reproducirSonido = function(sonido){
+  var audio = document.getElementById(sonido);
+  audio.play();
+}
+
