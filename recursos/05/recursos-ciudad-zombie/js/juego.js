@@ -31,7 +31,7 @@ var Juego = {
     new Obstaculo('imagenes/valla_vertical.png', 510, 450, 30, 30, 1),
     new Obstaculo('imagenes/valla_vertical.png', 510, 480, 30, 30, 1),
     //autos rotos
-    new Obstaculo('imagenes/auto_verde_abajo.png',180,100,15,30,3),
+    new Obstaculo('imagenes/auto_verde_abajo.png',130,100,15,30,3),
     new Obstaculo('imagenes/auto_verde_abajo.png',820,100,15,30,3),
     new Obstaculo('imagenes/auto_verde_derecha.png',300,240,30,15,3),
     //baches

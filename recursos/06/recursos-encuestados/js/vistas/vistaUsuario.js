@@ -22,6 +22,7 @@ VistaUsuario.prototype = {
     
     elementos.botonAgregar.click(function() {
       contexto.controlador.agregarVotos();  
+      console.log("voto agregado");
     });
       
     this.reconstruirGrafico();

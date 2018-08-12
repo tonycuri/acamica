@@ -19,6 +19,7 @@ VistaAdministrador.prototype = {
   inicializar: function() {
     //llamar a los metodos para reconstruir la lista, configurar botones y validar formularios
     validacionDeFormulario();
+
   },
 
   construirElementoPregunta: function(pregunta){
