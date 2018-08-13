@@ -7,31 +7,19 @@ var Modelo = function() {
 
   //inicializacion de eventos
   this.preguntaAgregada = new Evento(this);
+  this.preguntaGuardada = new Evento(this);
+  this.preguntaBorrada = new Evento(this);
 };
 
 Modelo.prototype = {
   //se obtiene el id más grande asignado a una pregunta
   obtenerUltimoId: function() {
-    
-    // var Ids = [];
-    // for (let i = 0; i <  this.preguntas.length; i++)  {
-    //   Ids.push(this.preguntas[i].id);      
-    // }
-
-    // if(Ids.length != 0){
-    //   var max = Ids.reduce(function(a, b) {
-    //     return Math.max(a, b);
-    //   });
-    //   return max;
-    // } else {
-    //   return 0;
-    // }
+    return this.ultimoId;
   },
 
   //se agrega una pregunta dado un nombre y sus respuestas
   agregarPregunta: function(nombre, respuestas) {
     var id = this.obtenerUltimoId();
-    console.log(id);
     id++;
     var nuevaPregunta = {'textoPregunta': nombre, 'id': id, 'cantidadPorRespuesta': respuestas};
     this.preguntas.push(nuevaPregunta);
@@ -41,5 +29,15 @@ Modelo.prototype = {
 
   //se guardan las preguntas
   guardar: function(){
+    //guardamos las preguntas en el navegador
+    localStorage.setItem("preguntas", JSON.stringify(this.preguntas));
+    this.preguntaGuardada.notificar();
+  },
+
+  borrarPregunta: function(pregunta){
+    var index = this.preguntas.findIndex(preg => preg.id == pregunta.id);
+    this.preguntas.splice(index, 1);
+    this.guardar();
+    this.preguntaBorrada.notificar();
   },
 };

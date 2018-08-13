@@ -13,6 +13,7 @@ Controlador.prototype = {
     $('[name="option[]"]').each(function() {
       var respuesta = $(this).val();
       //Completar el agregado de una respuesta
+      respuestas.push(respuesta);
       // pusheandola al arreglo de respuestas
       
     })

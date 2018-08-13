@@ -11,6 +11,12 @@ var VistaAdministrador = function(modelo, controlador, elementos) {
   this.modelo.preguntaAgregada.suscribir(function() {
     contexto.reconstruirLista();
   });
+  this.modelo.preguntaGuardada.suscribir(function(){
+    contexto.reconstruirLista();
+  });
+  this.modelo.preguntaBorrada.suscribir(function () {
+    contexto.reconstruirLista();
+  });
 };
 
 
@@ -18,14 +24,17 @@ VistaAdministrador.prototype = {
   //lista
   inicializar: function() {
     //llamar a los metodos para reconstruir la lista, configurar botones y validar formularios
+    this.reconstruirLista();
+    this.configuracionDeBotones();
     validacionDeFormulario();
   },
 
   construirElementoPregunta: function(pregunta){
     var contexto = this;
     var nuevoItem;
-    //completar
     //asignar a nuevoitem un elemento li con clase "list-group-item", id "pregunta.id" y texto "pregunta.textoPregunta"
+    nuevoItem = $('<li id="' + pregunta.id + '" class="list-group-item">' + pregunta.textoPregunta + '</li>');
+
     var interiorItem = $('.d-flex');
     var titulo = interiorItem.find('h5');
     titulo.text(pregunta.textoPregunta);
