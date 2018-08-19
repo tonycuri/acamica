@@ -25,6 +25,7 @@ Modelo.prototype = {
     this.preguntas.push(nuevaPregunta);
     this.guardar();
     this.preguntaAgregada.notificar();
+    console.log(nuevaPregunta);
   },
 
   //se guardan las preguntas
@@ -32,6 +33,7 @@ Modelo.prototype = {
     //guardamos las preguntas en el navegador
     localStorage.setItem("preguntas", JSON.stringify(this.preguntas));
     this.preguntaGuardada.notificar();
+    console.log(this.preguntas);
   },
 
   borrarPregunta: function(pregunta){

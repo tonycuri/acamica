@@ -5,17 +5,21 @@ var Controlador = function(modelo) {
   this.modelo = modelo;
 };
 
+var Respuesta = function(texto){
+  this.textoRespuesta = texto;
+  this.cantidad = 0;
+}
+
 Controlador.prototype = {
   agregarPregunta: function() {
     var value = $('#pregunta').val();
     var respuestas = [];
 
     $('[name="option[]"]').each(function() {
-      var respuesta = $(this).val();
+      var respuesta = new Respuesta($(this).val());
       //Completar el agregado de una respuesta
       respuestas.push(respuesta);
       // pusheandola al arreglo de respuestas
-      
     })
     this.modelo.agregarPregunta(value, respuestas);
   },
@@ -31,6 +35,5 @@ Controlador.prototype = {
       contexto.agregarVoto(pregunta,respuestaSeleccionada);
     });
   },
-
-  
 };
+
