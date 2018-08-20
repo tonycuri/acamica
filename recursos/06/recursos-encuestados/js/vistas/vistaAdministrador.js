@@ -11,6 +11,14 @@ var VistaAdministrador = function(modelo, controlador, elementos) {
   this.modelo.preguntaAgregada.suscribir(function() {
     contexto.reconstruirLista();
   });
+
+  this.modelo.preguntaGuardada.suscribir(function(){
+    contexto.reconstruirLista();
+  });
+
+  this.modelo.preguntaBorrada.suscribir(function(){
+    contexto.reconstruirLista();
+  });
 };
 
 
