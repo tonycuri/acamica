@@ -34,5 +34,9 @@ Controlador.prototype = {
     });
   },
 
-  
+  borrarPregunta: function(){
+    var id = parseInt($('.list-group-item.active').attr('id'));
+    this.modelo.borrarPregunta(id);
+    console.log(id);
+  },
 };

@@ -51,7 +51,6 @@ VistaUsuario.prototype = {
     })
   },
 
-
   reconstruirLista: function() {
     var listaPreguntas = this.elementos.listaPreguntas;
     listaPreguntas.html('');

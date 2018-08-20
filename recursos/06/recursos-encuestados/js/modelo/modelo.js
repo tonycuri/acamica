@@ -38,15 +38,26 @@ Modelo.prototype = {
     this.preguntas.push(nuevaPregunta);
     this.guardar();
     this.preguntaAgregada.notificar();
+    console.log("modelo || pregunta agregada");
   },
 
-  //se guardan las preguntas
+  //se guardan las preguntas en el navegador
   guardar: function(){
     localStorage.setItem("preguntas", JSON.stringify(this.preguntas));
     this.preguntaGuardada.notificar();
     console.log("modelo guardando pregunta");
   },
-  borrarPregunta: function(){
+
+  //se agrega la funcion de borrar la pregunta seleccionada
+  borrarPregunta: function(id){
+    for (let i = 0; i < this.preguntas.length; i++) {
+      if(this.preguntas[i].id == id){
+        this.preguntas.splice(i,1);
+      }
+    }
+    this.guardar();
+    this.preguntaBorrada.notificar();
+    console.log("modelo || pregunta borrada");
   },
   
 };

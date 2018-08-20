@@ -69,9 +69,11 @@ VistaAdministrador.prototype = {
     });
     // Completar la asociación de de eventos a los
     // botones editarPregunta, borrarPregunta y borrarTodo
-   
+    e.botonBorrarPregunta.click(function(){
+      contexto.controlador.borrarPregunta();
+      contexto.limpiarFormulario();
+    });
   },
-
 
   limpiarFormulario: function(){
     $('.form-group.answer.has-feedback.has-success').remove();
