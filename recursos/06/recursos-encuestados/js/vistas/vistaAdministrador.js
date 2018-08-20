@@ -18,6 +18,8 @@ VistaAdministrador.prototype = {
   //lista
   inicializar: function() {
     //llamar a los metodos para reconstruir la lista, configurar botones y validar formularios
+    this.reconstruirLista();
+    this.configuracionDeBotones();
     validacionDeFormulario();
 
   },
@@ -27,6 +29,8 @@ VistaAdministrador.prototype = {
     var nuevoItem;
     //completar
     //asignar a nuevoitem un elemento li con clase "list-group-item", id "pregunta.id" y texto "pregunta.textoPregunta"
+    nuevoItem = $('<li id="' + pregunta.id + '" class="list-group-item">' + pregunta.textoPregunta + '</li>');
+
     var interiorItem = $('.d-flex');
     var titulo = interiorItem.find('h5');
     titulo.text(pregunta.textoPregunta);
@@ -52,8 +56,8 @@ VistaAdministrador.prototype = {
 
     //asociación de eventos
     e.botonAgregarPregunta.click(function() {
-      contexto.limpiarFormulario();
       contexto.controlador.agregarPregunta();
+      contexto.limpiarFormulario();
     });
     // Completar la asociación de de eventos a los
     // botones editarPregunta, borrarPregunta y borrarTodo
