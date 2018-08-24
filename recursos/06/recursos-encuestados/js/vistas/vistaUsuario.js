@@ -19,6 +19,10 @@ var VistaUsuario = function(modelo, controlador, elementos) {
   this.modelo.preguntaGuardada.suscribir(function(){
     contexto.reconstruirLista();
   });
+
+  this.modelo.preguntasBorradas.suscribir(function(){
+    contexto.reconstruirLista();
+  });
 };
 
 VistaUsuario.prototype = {

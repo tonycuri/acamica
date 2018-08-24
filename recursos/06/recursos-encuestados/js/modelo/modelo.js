@@ -9,6 +9,7 @@ var Modelo = function() {
   this.preguntaAgregada = new Evento(this);
   this.preguntaGuardada = new Evento(this);
   this.preguntaBorrada = new Evento(this);
+  this.preguntasBorradas= new Evento(this);
 };
 
 Modelo.prototype = {
@@ -53,11 +54,19 @@ Modelo.prototype = {
     for (let i = 0; i < this.preguntas.length; i++) {
       if(this.preguntas[i].id == id){
         this.preguntas.splice(i,1);
+        break;
       }
     }
     this.guardar();
     this.preguntaBorrada.notificar();
     console.log("modelo || pregunta borrada");
+  },
+
+  //se agrega la funcion de borrar todas las preguntas
+  borrarPreguntas: function(){
+    this.preguntas = [];
+    this.guardar();
+    this.preguntasBorradas.notificar();
   },
   
 };

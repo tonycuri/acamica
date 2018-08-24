@@ -39,4 +39,9 @@ Controlador.prototype = {
     this.modelo.borrarPregunta(id);
     console.log(id);
   },
+
+  borrarPreguntas: function(){
+    this.modelo.borrarPreguntas();
+  }
+
 };
