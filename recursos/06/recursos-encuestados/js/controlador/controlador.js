@@ -42,6 +42,11 @@ Controlador.prototype = {
 
   borrarPreguntas: function(){
     this.modelo.borrarPreguntas();
+  },
+
+  editarPregunta: function(){
+    var id = parseInt($('.list-group-item.active').attr('id'));
+    this.modelo.editarPregunta(id);
   }
 
 };

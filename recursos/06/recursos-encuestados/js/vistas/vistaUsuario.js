@@ -23,6 +23,10 @@ var VistaUsuario = function(modelo, controlador, elementos) {
   this.modelo.preguntasBorradas.suscribir(function(){
     contexto.reconstruirLista();
   });
+
+  this.modelo.preguntaEditada.suscribir(function(){
+    contexto.reconstruirLista();
+  });
 };
 
 VistaUsuario.prototype = {

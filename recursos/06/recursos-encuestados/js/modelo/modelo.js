@@ -10,6 +10,7 @@ var Modelo = function() {
   this.preguntaGuardada = new Evento(this);
   this.preguntaBorrada = new Evento(this);
   this.preguntasBorradas= new Evento(this);
+  this.preguntaEditada = new Evento(this);
 };
 
 Modelo.prototype = {
@@ -69,4 +70,15 @@ Modelo.prototype = {
     this.preguntasBorradas.notificar();
   },
   
+  editarPregunta: function(id){
+    for (let i = 0; i < this.preguntas.length; i++) {
+      if(this.preguntas[i].id == id){
+        this.preguntas[i].textoPregunta = prompt('Editar Pregunta');
+        break;
+      }
+    }
+    this.guardar();
+    this.preguntaEditada.notificar();
+    console.log("modelo || pregunta editada");
+  },
 };
