@@ -43,8 +43,6 @@ VistaAdministrador.prototype = {
   construirElementoPregunta: function(pregunta){
     var contexto = this;
     var nuevoItem;
-    //completar
-    //asignar a nuevoitem un elemento li con clase "list-group-item", id "pregunta.id" y texto "pregunta.textoPregunta"
     nuevoItem = $('<li id="' + pregunta.id + '" class="list-group-item">' + pregunta.textoPregunta + '</li>');
 
     var interiorItem = $('.d-flex');
@@ -75,8 +73,7 @@ VistaAdministrador.prototype = {
       contexto.controlador.agregarPregunta();
       contexto.limpiarFormulario();
     });
-    // Completar la asociación de de eventos a los
-    // botones editarPregunta, borrarPregunta y borrarTodo
+    
     e.botonBorrarPregunta.click(function(){
       contexto.controlador.borrarPregunta();
     });

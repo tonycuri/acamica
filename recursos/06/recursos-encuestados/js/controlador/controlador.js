@@ -30,14 +30,13 @@ Controlador.prototype = {
       var pregunta = contexto.modelo.obtenerPregunta(nombrePregunta);
       var respuestaSeleccionada = $('input[name=' + id + ']:checked').val();
       $('input[name=' + id + ']').prop('checked',false);
-      contexto.agregarVoto(pregunta,respuestaSeleccionada);
+      contexto.modelo.agregarVoto(pregunta,respuestaSeleccionada);
     });
   },
 
   borrarPregunta: function(){
     var id = parseInt($('.list-group-item.active').attr('id'));
     this.modelo.borrarPregunta(id);
-    console.log(id);
   },
 
   borrarPreguntas: function(){
