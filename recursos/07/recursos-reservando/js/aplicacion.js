@@ -207,7 +207,7 @@ Aplicacion.prototype.filtrarRestaurantes = function() {
         var filtroHorario = null;
     } else {
         var filtroHorario = $("#filtro-horario option:selected").val();
-    }
+    }   
 
     var restaurantesFiltrados = this.listado.obtenerRestaurantes(filtroRubro, filtroCiudad, filtroHorario);
     this.dibujarListado(restaurantesFiltrados);
