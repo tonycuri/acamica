@@ -10,8 +10,8 @@ geocodificadorModulo = (function () {
      coordenada: la ubicación de tipo google.maps.LatLng */
      geocodificador.geocode({address : direccion}, function(result,status){
       if(status == google.maps.GeocoderStatus.OK){
-          var coordenadas = result[0].geometry.location;
-          funcionALlamar(direccion,coordenadas);
+          var coordenadas = result[0].geometry.location
+          funcionALlamar(direccion,coordenadas)
       }
     }); 
   }
