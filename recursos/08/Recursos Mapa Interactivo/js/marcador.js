@@ -14,14 +14,18 @@ marcadorModulo = (function () {
     miMarcador = new google.maps.Marker({
       position : ubicacion,
       map : mapa,
-      animation : google.maps.Animation.BOUNCE
+      // title: 'Bienvenido a' + ubicacion.name, // intente adjuntar el nombre de la ubicacion seleccionada
+      animation : google.maps.Animation.DROP
     });
   }
 
     // Agrega la dirección del marcador en la lista de Lugares Intermedios
   function agregarDireccionMarcador (marcador) {
         // console.log(marcador.getPosition().lat() + ',' + marcador.getPosition().lng());
-    var marcadorLatLng = new google.maps.LatLng({ lat: marcador.getPosition().lat(), lng: marcador.getPosition().lng() })
+    var marcadorLatLng = new google.maps.LatLng({ 
+      lat: marcador.getPosition().lat(), 
+      lng: marcador.getPosition().lng() 
+    })
     direccionesModulo.agregarDireccion(marcador.getTitle(), marcadorLatLng)
   }
 

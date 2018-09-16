@@ -8,6 +8,31 @@ lugaresModulo = (function () {
         página (las direcciones ingresables por el usuario).
         Para esto creá un círculo con radio de 20000 metros y usalo para fijar
         los límites de la búsqueda de dirección. El círculo no se debe ver en el mapa. */
+
+    var circulo = new google.maps.Circle({
+      map : mapa,
+      center : posicionCentral,
+      radius : 20000,
+      visible : false
+    });
+
+    var options = {
+      types: ['geocode', 'establishment'],
+      strictBounds: true
+    };
+
+    var direccion = new google.maps.places.Autocomplete(document.getElementById('direccion'),{options});
+
+    var desde = new google.maps.places.Autocomplete(document.getElementById('desde'),{options});
+
+    var hasta = new google.maps.places.Autocomplete(document.getElementById('hasta'),{options});
+    
+    var agregar = new google.maps.places.Autocomplete(document.getElementById('agregar'),{options});
+
+    direccion.setBounds(circulo.getBounds());
+    desde.setBounds(circulo.getBounds());
+    hasta.setBounds(circulo.getBounds());
+    agregar.setBounds(circulo.getBounds());
   }
 
     // Inicializo la variable servicioLugares y llamo a la función autocompletar

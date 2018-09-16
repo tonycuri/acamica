@@ -8,7 +8,10 @@ function inicializarMapa () {
     /* Modificá la variable mapa con el constructor Map().
     Tendrás que asignarle un valor de zoom y
     un centro igual a la variable posicionCentral. */
-  mapa = new google.maps.Map(document.getElementById("map"), {zoom: 15, center: posicionCentral})
+  mapa = new google.maps.Map(document.getElementById("map"),{
+    zoom: 15, 
+    center: posicionCentral
+  })
   geocodificadorModulo.inicializar()
   marcadorModulo.inicializar()
   direccionesModulo.inicializar()
