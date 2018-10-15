@@ -2,7 +2,7 @@ var conexion = require('../lib/conexionbd');
 
 function buscarGeneros(req, res) {
 
-    var sql = "select * from genero";
+    var sql = "SELECT * FROM genero";
 
     conexion.query(sql, function (error, resultado, fields) {
         if (error) {

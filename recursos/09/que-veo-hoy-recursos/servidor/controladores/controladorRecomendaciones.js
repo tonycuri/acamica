@@ -15,24 +15,18 @@ function recomendacion(req, res) {
               "from pelicula as P " +
               "left join genero as G on P.genero_id = G.id ";
 
-    var sqlWhere = "";
+    var where = "";
 
-    //agregar palabra where si se informa algun criterio
     if ((anio_inicio) || (anio_fin) || (puntuacion) || (genero)) {
-
-        sqlWhere = " where ";
-
-        //genero el where segun esten informados los criterios
-        if (anio_inicio) {sqlWhere = sqlWhere + " P.anio >= " + anio_inicio + " and";}
-        if (anio_fin)    {sqlWhere = sqlWhere + " P.anio <= " + anio_fin + " and";}
-        if (puntuacion)  {sqlWhere = sqlWhere + " P.puntuacion = " + puntuacion + " and";}
-        if (genero)      {sqlWhere = sqlWhere + " G.nombre = '" + genero + "' and";}
-
-        //eliminar and final del where
-        sqlWhere = sqlWhere.substr(0, sqlWhere.length - 3)
+        where = " WHERE ";
+        if (anio_inicio) {where = where + " P.anio >= " + anio_inicio + " AND";}
+        if (anio_fin)    {where = where + " P.anio <= " + anio_fin + " AND";}
+        if (puntuacion)  {where = where + " P.puntuacion = " + puntuacion + " AND";}
+        if (genero)      {where = where + " G.nombre = '" + genero + "' AND";}
+        where = where.substr(0, where.length - 3)
     }
 
-    sql = sql + sqlWhere;
+    sql = sql + where;
 
     conexion.query(sql, function(error, resultado, fields) {
         if (error) {

@@ -17,11 +17,10 @@ function buscarPeliculas(req, res) {
     if (req.query.columna_orden) {
         queryParams += " ORDER BY " + req.query.columna_orden + " ";
     }
-
     if (req.query.tipo_orden) {
         queryParams += req.query.tipo_orden;
     }
-
+    
     if (req.query.cantidad) {
         var cant = req.query.cantidad;
     } else {
@@ -34,9 +33,9 @@ function buscarPeliculas(req, res) {
         var comienzo = 0;
     }
 
-    var querysql = "SELECT * FROM pelicula WHERE 1 = 1 " + queryParams + " LIMIT " + comienzo + "," + cant + ";";
+    var sql = "SELECT * FROM pelicula WHERE 1 = 1 " + queryParams + " LIMIT " + comienzo + "," + cant + ";";
 
-    conexion.query(querysql, function (error, resultado) {
+    conexion.query(sql, function (error, resultado) {
         if (error) {
             console.log('ERROR', error.message);
             return res.status(500).send(error);
@@ -62,5 +61,5 @@ function buscarPeliculas(req, res) {
 }
 
 module.exports = {
-    buscarPeliculas : buscarPeliculas
+    buscarPeliculas: buscarPeliculas
 }

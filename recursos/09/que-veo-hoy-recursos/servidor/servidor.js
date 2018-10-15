@@ -5,6 +5,7 @@ var cors = require('cors');
 var controladorPelicula = require('./controladores/controladorPeliculas.js');
 var controladorGenero = require('./controladores/controladorGeneros.js');
 var controladorRecomendacion = require('./controladores/controladorRecomendaciones.js');
+var controladorInformacion = require('./controladores/controladorInformacion.js');
 
 var app = express();
 
@@ -19,7 +20,8 @@ app.use(bodyParser.json());
 app.get("/peliculas", controladorPelicula.buscarPeliculas);
 app.get("/generos", controladorGenero.buscarGeneros);
 app.get("/peliculas/recomendacion", controladorRecomendacion.recomendacion);
-// app.get("/peliculas/:id", controller.obtenerPeliculaData);
+app.get("/peliculas/:id", controladorInformacion.obtenerDatos);
+
 
 //seteamos el puerto en el cual va a escuchar los pedidos la aplicación
 var puerto = '8080';
