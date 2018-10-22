@@ -92,18 +92,18 @@ describe('Test Reservado', function () {
     });
   });
 
-  describe('Testeando la funcion PrecioBase del objeto Reserva ',function(){
-    it('Calcula correctamente el precio Base',function(){
-        expect(listadoReservas[0].precioBase()).to.equal(2800);
-        expect(listadoReservas[1].precioBase()).to.equal(300);      
+  describe('Testeando la funcion PrecioBase del objeto Reserva ', function () {
+    it('Calcula correctamente el precio Base', function () {
+      expect(listadoReservas[0].precioBase()).to.equal(2800);
+      expect(listadoReservas[1].precioBase()).to.equal(300);
     });
 
   });
 
-  describe('Testeando la funcion PrecioFinal del objeto Reserva',function(){
-      it('Calcula correctamente su precio Final',function(){
-        expect(listadoReservas[0].precioFinal()).to.equal(2310);
-        expect(listadoReservas[1].precioFinal()).to.equal(100);
-      });
+  describe('Testeando la funcion PrecioFinal del objeto Reserva', function () {
+    it('Calcula correctamente su precio Final', function () {
+      expect(listadoReservas[0].precioFinal()).to.equal(2310);
+      expect(listadoReservas[1].precioFinal()).to.equal(100);
+    });
   });
 })

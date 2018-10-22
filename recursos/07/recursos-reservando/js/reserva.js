@@ -10,27 +10,28 @@ Reserva.prototype.precioBase = function () {
 }
 
 Reserva.prototype.precioFinal = function () {
-    return this.precioBase() - this.descuentoTotal() + this.adicionalesTotal() ;
+    return this.precioBase() - this.descuentoTotal() + this.adicionalesTotal();
+
 }
 
 Reserva.prototype.descuentoPorGrupo = function () {
     if (this.cantPersonas >= 4 && this.cantPersonas < 6) {
         return (this.precioBase() * 5) / 100
-    }else if (this.cantPersonas >= 6 && this.cantPersonas < 8) {
+    } else if (this.cantPersonas >= 6 && this.cantPersonas < 8) {
         return (this.precioBase() * 10) / 100
-    }else if (this.cantPersonas >= 8 && this.cantPersonas < 10) {
+    } else if (this.cantPersonas >= 8 && this.cantPersonas < 10) {
         return (this.precioBase() * 15 / 100)
     }
     return 0;
 }
 
-Reserva.prototype.descuentosGrupo = function(base) {
+Reserva.prototype.descuentosGrupo = function (base) {
 
-    if (this.cantPersonas >= 4 && this.cantPersonas < 6){
+    if (this.cantPersonas >= 4 && this.cantPersonas < 6) {
         return (this.precioBase() * 5) / 100;
     } else if (this.cantPersonas >= 6 && this.cantPersonas < 8) {
         return (this.precioBase() * 10) / 100;
-    } else if (this.cantPersonas >= 8){
+    } else if (this.cantPersonas >= 8) {
         return (this.precioBase() * 15 / 100)
     }
     return 0;
@@ -39,9 +40,9 @@ Reserva.prototype.descuentosGrupo = function(base) {
 Reserva.prototype.descuentoPorCodigo = function () {
     if (this.descuento === "DES15") {
         return (this.precioBase() * 15) / 100;
-    }else if (this.descuento === "DES200") {
+    } else if (this.descuento === "DES200") {
         return 200;
-    }else if (this.descuento === "DES1") {
+    } else if (this.descuento === "DES1") {
         return this.precioPersona;
     }
     return 0;
@@ -70,7 +71,7 @@ Reserva.prototype.adicionalesTotal = function () {
     return this.adicionalFinDeSemana() + this.adicionalPorHorario();
 }
 
-var listadoReservas  = [
-    new Reserva (new Date(2018, 7, 24, 11, 00), 8, 350, "DES1"),
-    new Reserva (new Date(2018, 7, 27, 14, 100), 2, 150, "DES200")
+var listadoReservas = [
+    new Reserva(new Date(2018, 7, 24, 11, 00), 8, 350, "DES1"),
+    new Reserva(new Date(2018, 7, 27, 14, 100), 2, 150, "DES200")
 ];
